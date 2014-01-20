@@ -1,20 +1,25 @@
-%nav.top-bar{"data-topbar" => ""}
-  %ul.title-area
-    %li.name
-      %h1
-        %a{:href => "#"} Tricks
-    %li.toggle-topbar.menu-icon
-      %a{:href => "#"} Menu
-  %section.top-bar-section
-    %ul.right
-      %li
-        %a{:href => "#"} Create A Trick
-      %li
-        = link_to "Sign up", register_path
-      %li.has-dropdown
-        %a{:href => "#"} Eric Wu
-        %ul.dropdown
-          %li
-            %a{:href => "#"} Profile
-          %li
-            %a{:href => "#"} Sign Out
+#header
+  %nav.navbar.navbar-default{:role => "navigation"}
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "#"} Tricks
+    #navbar-collapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => "#"} Popular
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            Eric Wu
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"} Profile
+            %li
+              %a{:href => "#"} Reset Password
+            %li
+              %a{:href => "#"} Sign Out
