@@ -1,12 +1,20 @@
-%form
-  .row
-    .large-4.columns
-      %label Email
-      %input(type="text")
-    .large-4.columns
-      %label Password
-      %input(type="password")
-    .large-4.columns
-      %label Full Name
-      %input(type="text")
-
+.sign-up.well
+  .container
+    .row
+      .col-xs-5
+        %form.form-horizontal{:role => "form"}
+          .form-group
+            %label.col-sm-2.control-label{:for => "inputEmail3"} Email
+            .col-sm-10
+              %input#inputEmail3.form-control{:placeholder => "Email", :type => "email"}
+          .form-group
+            %label.col-sm-2.control-label{:for => "inputUsername3"} Username
+            .col-sm-10
+              %input#inputUsername3.form-control{:placeholder => "Username", :type => "username"}
+          .form-group
+            %label.col-sm-2.control-label{:for => "inputPassword3"} Password
+            .col-sm-10
+              %input#inputPassword3.form-control{:placeholder => "Password", :type => "password"}
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              %button.btn.btn-default{:type => "submit"} Sign up
