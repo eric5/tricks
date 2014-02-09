@@ -1,15 +1,13 @@
-root = "/opt/tricks"
-working_directory root
-pid "#{root}/tmp/pids/unicorn.pid"
-stderr_path "#{root}/log/unicorn.log"
-stdout_path "#{root}/log/unicorn.log"
+APP_PATH = File.expand_path("../..", __FILE__)
+working_directory APP_PATH
 
-listen "/tmp/unicorn.tricks.sock"
+listen 8080, :tcp_nopush => true
+listen "/tmp/unicorn.sock", :backlog => 64
+
+stderr_path APP_PATH + "/log/unicorn.stderr.log"
+stdout_path APP_PATH + "/log/unicorn.stdout.log"
+
+pid APP_PATH + "/tmp/pids/unicorn.pid"
+
 worker_processes 2
 timeout 30
-
-# Force the bundler gemfile environment variable to
-# reference the capistrano "current" symlink
-before_exec do |_|
-  ENV["BUNDLE_GEMFILE"] = File.join(root, 'Gemfile')
-end
