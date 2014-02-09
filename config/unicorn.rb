@@ -1,18 +1,15 @@
-module Rails
-  class << self
-    def root
-      File.expand_path(__FILE__).split('/')[0..-3].join('/')
-    end
-  end
+root = "/opt/tricks"
+working_directory root
+pid "#{root}/tmp/pids/unicorn.pid"
+stderr_path "#{root}/log/unicorn.log"
+stdout_path "#{root}/log/unicorn.log"
+
+listen "/tmp/unicorn.tricks.sock"
+worker_processes 2
+timeout 30
+
+# Force the bundler gemfile environment variable to
+# reference the capistrano "current" symlink
+before_exec do |_|
+  ENV["BUNDLE_GEMFILE"] = File.join(root, 'Gemfile')
 end
-rails_env = ENV["RAILS_ENV"] || "production"
-
-preload_app true
-working_directory Rails.root
-pid "#{Rails.root}/tmp/pids/unicorn.pid"
-stderr_path "#{Rails.root}/log/unicorn.log"
-stdout_path "#{Rails.root}/log/unicorn.log"
-
-listen "/tmp/unicorn.shop.sock"
-worker_processes 3
-timeout 120
