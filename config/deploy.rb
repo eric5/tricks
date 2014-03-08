@@ -16,6 +16,7 @@ set :repository, 'git@github.com:eric5/tricks.git'
 set :branch, 'master'
 set :user, 'root'
 set :rvm_path, '/usr/local/rvm/scripts/rvm'
+set :app_path, '/opt/www/tricks.thetoughway.com/current'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
@@ -62,45 +63,8 @@ task :deploy => :environment do
     invoke :'rails:assets_precompile'
 
     to :launch do
-      invoke :'unicorn:restart'
+      # invoke :'unicorn:restart'
     end
-  end
-end
-
-#                                                                       Unicorn
-# ==============================================================================
-namespace :unicorn do
-  set :unicorn_pid, "#{app_path}/tmp/pids/unicorn.pid"
-  set :start_unicorn, %{
-    cd #{app_path}
-    bundle exec unicorn -c #{app_path}/config/unicorn/#{rails_env}.rb -E #{rails_env} -D
-  }
-
-#                                                                    Start task
-# ------------------------------------------------------------------------------
-  desc "Start unicorn"
-  task :start => :environment do
-    queue 'echo "-----> Start Unicorn"'
-    queue! start_unicorn
-  end
-
-#                                                                     Stop task
-# ------------------------------------------------------------------------------
-  desc "Stop unicorn"
-  task :stop do
-    queue 'echo "-----> Stop Unicorn"'
-    queue! %{
-      test -s "#{unicorn_pid}" && kill -QUIT `cat "#{unicorn_pid}"` && echo "Stop Ok" && exit 0
-      echo >&2 "Not running"
-    }
-  end
-
-#                                                                  Restart task
-# ------------------------------------------------------------------------------
-  desc "Restart unicorn using 'upgrade'"
-  task :restart => :environment do
-    invoke 'unicorn:stop'
-    invoke 'unicorn:start'
   end
 end
 
@@ -110,4 +74,3 @@ end
 #  - http://nadarei.co/mina/tasks
 #  - http://nadarei.co/mina/settings
 #  - http://nadarei.co/mina/helpers
-
