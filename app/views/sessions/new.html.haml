@@ -1,0 +1,18 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      .sign-in.bg-white
+        .sign-in-title
+          Sign in
+        .sign-in-body
+          = form_tag :sessions, class: 'sign-in' do
+            .form-group
+              = label_tag :email, 'Email', { class: 'control-label' }
+              = email_field_tag :email, nil, { placeholder: 'Email', class: 'form-control' }
+            .form-group
+              = label_tag :password, 'Password', class: 'control-label'
+              = password_field_tag :password, nil, { placeholder: 'Password', class: 'form-control' }
+            %input(type='submit' value='Sign in' class="btn btn-success")
+          .forget-password
+            %hr
+            = link_to 'Forget password?', register_path
