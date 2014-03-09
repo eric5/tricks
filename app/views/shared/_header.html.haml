@@ -13,14 +13,20 @@
           %li
             %a{:href => "#"} Popular
         %ul.nav.navbar-nav.navbar-right
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              Eric Wu
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                %a{:href => "#"} Profile
-              %li
-                %a{:href => "#"} Reset Password
-              %li
-                %a{:href => "#"} Sign Out
+          - if current_user
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                = current_user.name
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  %a{:href => "#"} Profile
+                %li
+                  %a{:href => "#"} Reset Password
+                %li
+                  = link_to 'Sign out', sign_out_path
+          - else
+            %li.dropdown
+              = link_to 'Sign up', register_path
+            %li.dropdown
+              = link_to 'Sign in', sign_in_path
