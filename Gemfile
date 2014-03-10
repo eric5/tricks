@@ -20,7 +20,7 @@ gem 'mina', '~> 0.3.0'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'factory_girl'
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
   gem 'database_cleaner'
 end
