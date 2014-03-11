@@ -61,11 +61,12 @@ task :deploy => :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-
-    to :launch do
-      # invoke :'unicorn:restart'
-    end
   end
+end
+
+task :restart do
+  queue 'service unicorn stop'
+  queue 'bundle exec unicorn_rails -D -c /opt/www/tricks.thetoughway.com/current/config/unicorn.rb -E production'
 end
 
 # For help in making your deploy script, see the Mina documentation:
