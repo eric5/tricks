@@ -12,9 +12,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'unicorn'
 
 gem 'mina', '~> 0.3.0'
 
@@ -28,3 +26,5 @@ group :development, :test do
   gem 'faker'
   gem 'database_cleaner'
 end
+
+gem 'unicorn'
