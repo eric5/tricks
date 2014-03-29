@@ -18,6 +18,10 @@ gem 'unicorn'
 
 gem 'mina', '~> 0.3.0'
 
+group :test do
+  gem 'shoulda-matchers'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
