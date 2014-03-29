@@ -16,6 +16,9 @@
                 ·
                 = trick.created_at.strftime("%Y-%m-%d %H:%m")
                 · 0 comments
+        .left-panel-footer.clearfix
+          .paginate
+            = paginate @tricks
     .col-md-3
       .right-panel
         %button{class: 'btn btn-success btn-block'}
