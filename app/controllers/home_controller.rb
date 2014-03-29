@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
   def index
-    @tricks = Trick.all
+    @tricks = Trick.order(created_at: :desc).page(params[:page])
   end
 end
