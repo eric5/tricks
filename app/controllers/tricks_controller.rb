@@ -15,10 +15,6 @@ class TricksController < ApplicationController
     end
   end
 
-  def show
-    @tricks = Trick.first(10)
-  end
-
   private
 
   def trick_params
