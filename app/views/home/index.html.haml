@@ -21,5 +21,6 @@
             = paginate @tricks
     .col-md-3
       .right-panel
-        %button{class: 'btn btn-success btn-block'}
-          = link_to 'Create a trick', new_trick_path
+        %a{:href => new_trick_path}
+          %button{ class: 'btn btn-success btn-block' }
+            Create a trick
