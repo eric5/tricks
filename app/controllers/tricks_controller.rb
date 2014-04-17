@@ -15,6 +15,10 @@ class TricksController < ApplicationController
     end
   end
 
+  def show
+    @trick = Trick.find_by(id: params[:id])
+  end
+
   private
 
   def trick_params
