@@ -14,7 +14,7 @@ set :domain, 'tricks.thetoughway.com'
 set :deploy_to, '/opt/www/tricks.thetoughway.com'
 set :repository, 'git@github.com:eric5/tricks.git'
 set :branch, 'master'
-set :user, 'root'
+set :user, 'ericwu'
 set :rvm_path, '/usr/local/rvm/scripts/rvm'
 set :app_path, '/opt/www/tricks.thetoughway.com/current'
 
