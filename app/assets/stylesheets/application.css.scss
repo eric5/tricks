@@ -17,3 +17,7 @@
 body {
   background-color: #eee;
 }
+
+html.turbolinks-progress-bar::before {
+  height: 2px !important;
+}
