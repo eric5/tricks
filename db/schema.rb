@@ -13,31 +13,30 @@
 
 ActiveRecord::Schema.define(version: 20140330023843) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "categories", force: true do |t|
-    t.string   "name"
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "tricks", force: true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "content"
+  create_table "tricks", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "title",      limit: 255
+    t.text     "content",    limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "tricks", ["user_id"], name: "index_tricks_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "name"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.string   "name",            limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
 end
